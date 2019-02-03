@@ -5,8 +5,8 @@ const _ = require('lodash');
 const keys = require('./config/keys');
 const mongoose = require('mongoose');
 const Food = require('./models/food');
-// const middleware = require('@line/bot-sdk').middleware;
-// const Client = require('@line/bot-sdk').Client;
+const middleware = require('@line/bot-sdk').middleware;
+const Client = require('@line/bot-sdk').Client;
 
 // const config = {
 //   channelAccessToken:'XgMqQKgVD/B3V1UFAYX3AHCeHcBoskjU2o8dcVIkDCxBfOzUIHqVrbB5Y3ZQpU6CYuCruTbxMyYwpRLJZr1MKKrsaTntYCVEorG8W8f0hTdnRZEE6c2GLcHM0fao4SvmB96dnhxZ9zZGGxwtJTbyAAdB04t89/1O/w1cDnyilFU=',
