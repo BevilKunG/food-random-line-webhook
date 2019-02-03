@@ -48,24 +48,24 @@ app.post('/foods',(req,res) => {
 
 //Line Webhook
 app.post('/webhook',middleware(config),(req,res) => {
-  // const event = req.body.event[0];
-  // if(event === 'message'){
-  //   const message = event.message;
-  //   if(message.type === 'text' && message.text === 'กินอะไรดี'){
-  //     Food.find({},(err,foundFoods) => {
-  //       if(err){
-  //         console.log(err);
-  //       }else{
-  //         const shuffled = _.shuffle(foundFoods);
-  //         const randomFood = shuffled[Math.floor(Math.random() * _.size(shuffled))];
-  //         client.replyMessage(event.replyToken,{
-  //           type:'text',
-  //           text:`${randomFood.name} ${randomFood.restaurant} ${randomFood.location} ลำขนาดเจ้า`
-  //         });
-  //       }
-  //     });
-  //   }
-  // }
+  const event = req.body.event[0];
+  if(event === 'message'){
+    const message = event.message;
+    if(message.type === 'text' && message.text === 'กินอะไรดี'){
+      Food.find({},(err,foundFoods) => {
+        if(err){
+          console.log(err);
+        }else{
+          const shuffled = _.shuffle(foundFoods);
+          const randomFood = shuffled[Math.floor(Math.random() * _.size(shuffled))];
+          client.replyMessage(event.replyToken,{
+            type:'text',
+            text:`${randomFood.name} ${randomFood.restaurant} ${randomFood.location} ลำขนาดเจ้า`
+          });
+        }
+      });
+    }
+  }
 
   res.send('webhook success!!');
 });
