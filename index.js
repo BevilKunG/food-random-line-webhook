@@ -8,12 +8,12 @@ const Food = require('./models/food');
 const middleware = require('@line/bot-sdk').middleware;
 const Client = require('@line/bot-sdk').Client;
 
-// const config = {
-//   channelAccessToken:'XgMqQKgVD/B3V1UFAYX3AHCeHcBoskjU2o8dcVIkDCxBfOzUIHqVrbB5Y3ZQpU6CYuCruTbxMyYwpRLJZr1MKKrsaTntYCVEorG8W8f0hTdnRZEE6c2GLcHM0fao4SvmB96dnhxZ9zZGGxwtJTbyAAdB04t89/1O/w1cDnyilFU=',
-//   channelSecret:'8eab0edbef136a0b061f278d790c90fc'
-// };
+const config = {
+  channelAccessToken:'XgMqQKgVD/B3V1UFAYX3AHCeHcBoskjU2o8dcVIkDCxBfOzUIHqVrbB5Y3ZQpU6CYuCruTbxMyYwpRLJZr1MKKrsaTntYCVEorG8W8f0hTdnRZEE6c2GLcHM0fao4SvmB96dnhxZ9zZGGxwtJTbyAAdB04t89/1O/w1cDnyilFU=',
+  channelSecret:'8eab0edbef136a0b061f278d790c90fc'
+};
 
-// const client = new Client(config);
+const client = new Client(config);
 
 mongoose.connect(keys.mongoURI,{ useNewUrlParser: true });
 
