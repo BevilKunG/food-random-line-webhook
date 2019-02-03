@@ -1,10 +1,11 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const keys = require('./config/keys');
 const mongoose = require('mongoose');
 const Food = require('./models/food');
 
-mongoose.connect('mongodb://localhost/food-random',{ useNewUrlParser: true });
+mongoose.connect(keys.mongoURI,{ useNewUrlParser: true });
 
 app.set('view engine','ejs');
 app.use(bodyParser.urlencoded({ entended:true }));
