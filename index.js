@@ -47,7 +47,7 @@ app.post('/foods',(req,res) => {
 });
 
 //Line Webhook
-app.post('/webhook',middleware(config),(req,res) => {
+app.post('/webhook',(req,res) => {
   const event = req.body.event[0];
   // if(event === 'message'){
   //   const message = event.message;
