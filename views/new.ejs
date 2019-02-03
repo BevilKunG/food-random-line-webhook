@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Add New Menu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+  </head>
+  <body>
+    <div class="ui container">
+      <div>
+      </div>
+      <form class="ui form" action="/foods" method="POST">
+        <div class="field">
+          <label for="name">Menu</label>
+          <input type="text" name="name"/>
+        </div>
+        <div class="field">
+          <label for="restaurant">Restaurant</label>
+          <input type="text" name="restaurant"/>
+        </div>
+        <div class="field">
+          <label for="location">Location</label>
+          <input type="text" name="location"/>
+        </div>
+
+        <button class="ui positive button"><i class="plus icon"></i>Add</button>
+      </form>
+      <h4 class="ui horizontal divider header">Menu</h4>
+        <div>
+        <%
+          foods.forEach(food => {
+        %>
+          <div class="ui compact segment">
+            <h1 class="ui orange header"><%=food.name%></h1>
+            <span class="ui olive header"><%=food.restaurant%></span>
+            <span> @ <%=food.location%></span>
+          </div>
+        <%
+          });
+        %>
+      </div>
+    </div>
+  </body>
+</html>
