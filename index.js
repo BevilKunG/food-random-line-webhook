@@ -48,8 +48,8 @@ app.post('/foods',(req,res) => {
 
 //Line Webhook
 app.post('/webhook',middleware(config),(req,res) => {
-  const event = req.body.event[0];
-  if(event === 'message'){
+  const event = req.body.events[0];
+  if(event.type === 'message'){
     const message = event.message;
     if(message.type === 'text' && message.text === 'กินอะไรดี'){
       Food.find({},(err,foundFoods) => {
