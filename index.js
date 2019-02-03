@@ -5,7 +5,7 @@ const _ = require('lodash');
 const keys = require('./config/keys');
 const mongoose = require('mongoose');
 const Food = require('./models/food');
-const lineMiddleware = require('@line/bot-sdk').middleware;
+const middleware = require('@line/bot-sdk').middleware;
 const Client = require('@line/bot-sdk').Client;
 
 const config = {
@@ -47,25 +47,25 @@ app.post('/foods',(req,res) => {
 });
 
 //Line Webhook
-app.post('/webhook',lineMiddleware(config),(req,res) => {
+app.post('/webhook',middleware(config),(req,res) => {
   const event = req.body.event[0];
-  if(event === 'message'){
-    const message = event.message;
-    if(message.type === 'text' && message.text === 'กินอะไรดี'){
-      Food.find({},(err,foundFoods) => {
-        if(err){
-          console.log(err);
-        }else{
-          const shuffled = _.shuffle(foundFoods);
-          const randomFood = shuffled[Math.floor(Math.random() * _.size(shuffled))];
-          client.replyMessage(event.replyToken,{
-            type:'text',
-            text:`${randomFood.name} ${randomFood.restaurant} ${randomFood.location} ลำขนาดเจ้า`
-          });
-        }
-      });
-    }
-  }
+  // if(event === 'message'){
+  //   const message = event.message;
+  //   if(message.type === 'text' && message.text === 'กินอะไรดี'){
+  //     Food.find({},(err,foundFoods) => {
+  //       if(err){
+  //         console.log(err);
+  //       }else{
+  //         const shuffled = _.shuffle(foundFoods);
+  //         const randomFood = shuffled[Math.floor(Math.random() * _.size(shuffled))];
+  //         client.replyMessage(event.replyToken,{
+  //           type:'text',
+  //           text:`${randomFood.name} ${randomFood.restaurant} ${randomFood.location} ลำขนาดเจ้า`
+  //         });
+  //       }
+  //     });
+  //   }
+  // }
 
   res.send('webhook success!!');
 });
