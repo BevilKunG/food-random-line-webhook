@@ -58,9 +58,11 @@ app.post('/webhook',middleware(config),(req,res) => {
         }else{
           const shuffled = _.shuffle(foundFoods);
           const randomFood = shuffled[Math.floor(Math.random() * _.size(shuffled))];
+          const delicious = _.shuffle(['ลำขนาดเจ้า','จ๊าดลำ','ลำแต๊แต๊เจ้า']);
+          const randomIndex = Math.floor(Math.random() * _.size(delicious));
           client.replyMessage(event.replyToken,{
             type:'text',
-            text:`${randomFood.name} ${randomFood.restaurant} ${randomFood.location} ลำขนาดเจ้า`
+            text:`${randomFood.name} ${randomFood.restaurant} ${randomFood.location} ${delicious[randomIndex]}`
           });
         }
       });
