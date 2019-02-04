@@ -66,6 +66,16 @@ app.post('/webhook',middleware(config),(req,res) => {
           });
         }
       });
+    }else if(message.type === 'text' && message.text === 'ครีเอทเมนูสุดเจ๋ง'){
+      const ingredient1 = ['ข้าว','สปาเก็ตตี้','สุกี้','เส้นหมี่','เส้นใหญ่','เส้นเล็ก','มักกะโรนี','ข้าวมัน','มาม่า','ข้าวกล้อง'];
+      const ingredient2 = ['ผัดพริกแกง','ผัดพริกเผา','ผัดไฟแดง','ผัด','ต้มยำ','ผัดขี้เมา','ผัดซีอิ๊ว','ผัดฉ่า','ผัดพริกสวน','กระเทียม'];
+      const ingredient3 = ['หมูชิ้น','หมูสับ','หมูกรอบ','เนื้อ','ปลาทู','ปลาสลิด','หอยลาย','ไก่กรอบ','ขาหมู','หมูยอ'];
+      const ingredient4 = ['คะน้า','ผักบุ้ง','หน่อไม้','ผักกาด','ผักรวม','บล็อคโคลี่','เห็ดหูหนู','กะหล่ำ','กวางตุ้ง'];
+      const newMenu = `${_.shuffle(ingredient1)[Math.floor(Math.random() * _size(ingredient1))]}${_.shuffle(ingredient2)[Math.floor(Math.random() * _size(ingredient2))]}${_.shuffle(ingredient3)[Math.floor(Math.random() * _size(ingredient3))]}${_.shuffle(ingredient4)[Math.floor(Math.random() * _size(ingredient4))]}`;
+      client.replyMessage(event.replyToken,{
+        type:'text',
+        text:newMenu
+      });
     }else if(message.type === 'text' && message.text === 'help'){
       const helpMessage = 'กินอะไรดี - สุ่มรายการอาหาร\n' + 'ครีเอทเมนูสุดเจ๋ง - สร้างเมนูใหม่แหวกแนว';
       client.replyMessage(event.replyToken,{
