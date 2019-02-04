@@ -71,7 +71,7 @@ app.post('/webhook',middleware(config),(req,res) => {
       const ingredient2 = _.shuffle(['ผัดพริกแกง','ผัดพริกเผา','ผัดไฟแดง','ผัด','ต้มยำ','ผัดขี้เมา','ผัดซีอิ๊ว','ผัดฉ่า','ผัดพริกสวน','กระเทียม']);
       const ingredient3 = _.shuffle(['หมูชิ้น','หมูสับ','หมูกรอบ','เนื้อ','ปลาทู','ปลาสลิด','หอยลาย','ไก่กรอบ','ขาหมู','หมูยอ']);
       const ingredient4 = _.shuffle(['คะน้า','ผักบุ้ง','หน่อไม้','ผักกาด','ผักรวม','บล็อคโคลี่','เห็ดหูหนู','กะหล่ำ','กวางตุ้ง']);
-      const newMenu = `${ingredient1[Math.floor(Math.random * _.size(ingredient1))]}`;
+      const newMenu = `${ingredient1[Math.floor(Math.random() * _.size(ingredient1))]}` + `${ingredient2[Math.floor(Math.random() * _.size(ingredient2))]}` + `${ingredient3[Math.floor(Math.random() * _.size(ingredient3))]}` + `${ingredient4[Math.floor(Math.random() * _.size(ingredient4))]}`;
       client.replyMessage(event.replyToken,{
         type:'text',
         text:newMenu
