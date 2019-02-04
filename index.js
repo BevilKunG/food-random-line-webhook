@@ -67,7 +67,7 @@ app.post('/webhook',middleware(config),(req,res) => {
         }
       });
     }else if(message.type === 'text' && message.text === 'help'){
-      const helpMessage = 'กินอะไรดี - สุ่มรายการอาหาร';
+      const helpMessage = 'กินอะไรดี - สุ่มรายการอาหาร\n' + 'ครีเอทเมนูสุดเจ๋ง - สร้างเมนูใหม่แหวกแนว';
       client.replyMessage(event.replyToken,{
         type:'text',
         text:helpMessage
